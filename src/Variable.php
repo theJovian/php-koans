@@ -4,35 +4,48 @@
 namespace koans;
 
 
+use phpDocumentor\Reflection\Types\Boolean;
+use PhpParser\Node\Scalar\String_;
+
 class Variable
 {
     public function __construct()
     {
     }
 
-    public function declareAnInt(){
+    public function declareAnInt():int
+    {
         return 1;
     }
 
-    public function declareABoolean(){
+    public function declareABoolean():bool{
         return true;
     }
 
-    public function declareAFloat(){
+    public function declareAFloat():float{
         return 3.14;
     }
 
-    public function declareAnArray(){
-        $array = [1, 2];
-        return $array;
+    public function declareAnArray():array{
+        return [1, 2];
     }
 
+    /*
+     * TODO: check the purpose of this functionality
+     */
     public function declareAnIntWithNullValue(){
-        $int = null;
-        return $int;
+        return null;
     }
 
-    public function assignAVariableValueToAnotherVariable($value){
-        return $value++;
+    public function assignAVariableValueToAnotherVariable(int $value):int{
+    return ++$value;
+    }
+
+    /*
+     * TODO: check the purpose of this functionality
+     */
+    public function castStringIntToBoolean(String $value):bool
+    {
+        return (bool)$value;
     }
 }
