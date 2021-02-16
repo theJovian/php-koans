@@ -1,12 +1,16 @@
 <?php
 
-namespace Deg540\koans\Test;
+namespace koans\Test;
 
 use koans\Variable;
 use PHPUnit\Framework\TestCase;
 
 class VariablesTest extends TestCase
 {
+    /*
+     *  --Variables--
+     */
+
     /**
      * @test
      **/
@@ -64,9 +68,18 @@ class VariablesTest extends TestCase
     {
         $variables = new Variable();
         $firstValue = 1;
-        $secondValue = $variables->declareAnIntWithNullValue($firstValue);
+        $secondValue = $variables->assignAVariableValueToAnotherVariable($firstValue);
         $this->assertNotEquals($firstValue, $secondValue);
     }
 
-
+    /**
+    * @test
+    **/
+    public function testCastStringIntToBoolean()
+    {
+        $variable = new Variable();
+        $stringToTest = "this is not a boolean, is it?";
+        $result = $variable->castStringIntToBoolean($stringToTest);
+        $this->assertTrue($result);
+    }
 }
